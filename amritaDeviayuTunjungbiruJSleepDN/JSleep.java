@@ -10,13 +10,6 @@ package amritaDeviayuTunjungbiruJSleepDN;
 public class JSleep
 {
     
-    getHotelId();
-    getHotelName();
-    System.out.println(getHotelName());
-    
-    isDiscount();
-    getDiscountPercentage(int beforeDiscount, float afterDsicount);
-    
     public static int getHotelId() {
         return 0;
     }
@@ -46,19 +39,22 @@ public class JSleep
     }
     
     public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
-        String
-        discountedPrice = discountedPrice * discountPercentage;
+        int originalPrice = discountedPrice * getDiscountedPrice();
+        return originalPrice;
     }
     
     public static float getAdminFeePercentage() {
-        
+        return 0.05f;
     }
     
-    public static int getAdminFee(int ) {
+    public static int getAdminFee(int price) {
+        int adminFee = getAdminFeePercentage * price;
         
+        return adminFee;
     }
     
-    public static int getTotalPrice(int , int ) {
-        
-    }
+    public static int getTotalPrice(int price, int numberOfNight) {
+        int totalPrice = price * numberOfNight + adminFee;
+        return totalPrice;
+    } 
 }
