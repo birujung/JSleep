@@ -9,27 +9,56 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class JSleep
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class JSleep
-     */
-    public JSleep()
-    {
-        // initialise instance variables
-        x = 0;
+    
+    getHotelId();
+    getHotelName();
+    System.out.println(getHotelName());
+    
+    isDiscount();
+    getDiscountPercentage(int beforeDiscount, float afterDsicount);
+    
+    public static int getHotelId() {
+        return 0;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public static String getHotelName() {
+        return "Hotel";
+    }
+    
+    public static boolean isDiscount() {
+        return true;
+    }
+    
+    public static float getDiscountedPercentage(int beforeDiscount, float afterDiscount) {
+        if ( beforeDiscount < afterDiscount ){
+            return 0.0f;
+        } else {
+            return beforeDiscount / 100f;
+        }
+    }
+    
+    public static int getDiscountedPrice(int price, float discountPercentage) {
+        if ( discountPercentage > 100.0f ) {
+            return 100;
+        } else {
+            return 0;
+        }
+    }
+    
+    public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
+        String
+        discountedPrice = discountedPrice * discountPercentage;
+    }
+    
+    public static float getAdminFeePercentage() {
+        
+    }
+    
+    public static int getAdminFee(int ) {
+        
+    }
+    
+    public static int getTotalPrice(int , int ) {
+        
     }
 }
