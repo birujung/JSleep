@@ -2,10 +2,8 @@ package amritaDeviayuTunjungbiruJSleepDN;
 
 
 /**
- * Write a description of class JSleep here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Amrita Deviayu Tunjungbiru
+ * 2106636584
  */
 public class JSleep
 {
@@ -23,24 +21,27 @@ public class JSleep
     }
     
     public static float getDiscountedPercentage(int beforeDiscount, float afterDiscount) {
-        if ( beforeDiscount < afterDiscount ){
+        if ( beforeDiscount <= afterDiscount ){
             return 0.0f;
         } else {
-            return beforeDiscount / 100f;
+            return ((float)(beforeDiscount - afterDiscount)/ (float)beforeDiscount) * 100;
         }
     }
     
     public static int getDiscountedPrice(int price, float discountPercentage) {
-        if ( discountPercentage > 100.0f ) {
+        if ( discountPercentage >= 100.0f ) {
             return 100;
         } else {
-            return 0;
+            return (int) (price * ((float)100.0 - discountPercentage) / 100);
         }
     }
     
     public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
-        int originalPrice = discountedPrice * getDiscountedPrice();
-        return originalPrice;
+        if (discountPercentage >= 100.0f){
+            return (int) 0;
+        } else {
+            return (int) ((float) discountedPrice * (100.0 / (100.0 - discountPercentage)));
+        }
     }
     
     public static float getAdminFeePercentage() {
@@ -48,13 +49,10 @@ public class JSleep
     }
     
     public static int getAdminFee(int price) {
-        int adminFee = getAdminFeePercentage * price;
-        
-        return adminFee;
+        return (int) ((float) price * 0.05f);
     }
     
     public static int getTotalPrice(int price, int numberOfNight) {
-        int totalPrice = price * numberOfNight + adminFee;
-        return totalPrice;
+        return (price * numberOfNight) + getAdminFee(price * numberOfNight);
     } 
 }
