@@ -7,7 +7,6 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class JSleep
 {
-    
     public static int getHotelId() {
         return 0;
     }
@@ -20,7 +19,7 @@ public class JSleep
         return true;
     }
     
-    public static float getDiscountedPercentage(int beforeDiscount, float afterDiscount) {
+    public static float getDiscountedPercentage(int beforeDiscount, int afterDiscount) {
         if ( beforeDiscount <= afterDiscount ){
             return 0.0f;
         } else {
@@ -55,4 +54,19 @@ public class JSleep
     public static int getTotalPrice(int price, int numberOfNight) {
         return (price * numberOfNight) + getAdminFee(price * numberOfNight);
     } 
+    
+    public static void main (String[] args) {
+        Room kamar = JSleep.createRoom();
+        
+        System.out.println(kamar.name);
+        System.out.println(kamar.size);
+        System.out.println(kamar.price.price);
+        System.out.println(kamar.facility);
+    }
+    
+    public static Room createRoom() {
+        Price price = new Price ( 100000, 5);
+        Room room = new Room ( "hotel", 30, price, Facility.AC );
+        return room;
+    }
 }
