@@ -7,9 +7,10 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Price
 {
-    double price;
-    int discount;
-    double rebate;
+    public double price;
+    public int discount;
+    public double rebate;
+    
     public Price(double price) {
         this.price = price;
         this.discount = 0;
@@ -29,12 +30,12 @@ public class Price
     }
     
     private double getDiscountedPrice() {
-        if ( discount > 100.0 ){
+        if ( discount >= 100.0 ){
             return 100.0;
         } else if ( discount == 100.0 ){
             return 0.0;
         } else {
-            return price - (price * discount / 100);
+            return (price - (price * discount / 100));
         }
     }
     

@@ -7,10 +7,10 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Room
 {
-    String name;
-    int size;
-    Price price;
-    Facility facility;
+    public String name;
+    public int size;
+    public Price price;
+    public Facility facility;
     
     public Room(String name, int size, Price price, Facility facility) {
         this.name = name;

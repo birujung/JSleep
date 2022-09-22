@@ -31,13 +31,13 @@ public class JSleep
         if ( discountPercentage >= 100.0f ) {
             return 100;
         } else {
-            return (int) (price * ((float)100.0 - discountPercentage) / 100);
+            return (int) (price * ((float)discountPercentage / 100));
         }
     }
     
     public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
-        if (discountPercentage >= 100.0f){
-            return (int) 0;
+        if (discountedPrice <= 0){
+            return 0;
         } else {
             return (int) ((float) discountedPrice * (100.0 / (100.0 - discountPercentage)));
         }
@@ -48,11 +48,11 @@ public class JSleep
     }
     
     public static int getAdminFee(int price) {
-        return (int) ((float) price * 0.05f);
+        return (int) (price * getAdminFeePercentage());
     }
     
     public static int getTotalPrice(int price, int numberOfNight) {
-        return (price * numberOfNight) + getAdminFee(price * numberOfNight);
+        return ((price * numberOfNight) + getAdminFee(price * numberOfNight));
     } 
     
     public static void main (String[] args) {
@@ -65,7 +65,7 @@ public class JSleep
     }
     
     public static Room createRoom() {
-        Price price = new Price ( 100000, 5);
+        Price price = new Price (100000, 5);
         Room room = new Room ( "hotel", 30, price, Facility.AC );
         return room;
     }
