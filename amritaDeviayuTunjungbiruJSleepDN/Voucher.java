@@ -2,10 +2,10 @@ package amritaDeviayuTunjungbiruJSleepDN;
 
 
 /**
- * Amrita Deviayu Tunjungbiru
- * 2106636584
+ * @author Amrita Deviayu Tunjungbiru (2106636584)
+ * @version (27-09-2022)
  */
-public class Voucher
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;
@@ -14,7 +14,8 @@ public class Voucher
     public double minimum;
     private boolean used;
     
-    public Voucher(String name, int code, Type type, double minimum, double cut) {
+    public Voucher(int id, String name, int code, Type type, double minimum, double cut) {
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;

@@ -2,8 +2,8 @@ package amritaDeviayuTunjungbiruJSleepDN;
 
 
 /**
- * Amrita Deviayu Tunjungbiru
- * 2106636584
+ * @author Amrita Deviayu Tunjungbiru (2106636584)
+ * @version (27-09-2022)
  */
 public class JSleep
 {
@@ -62,11 +62,17 @@ public class JSleep
         System.out.println(kamar.size);
         System.out.println(kamar.price.price);
         System.out.println(kamar.facility);
+        
+        Payment testRoom = new Payment(1, 1, 1, "", 1, "", "");
+        Invoice testInvoice = new Invoice(2, 2, 2, "");
+        
+        System.out.println(testRoom.print());
+        System.out.println(testInvoice.print());
     }
     
     public static Room createRoom() {
         Price price = new Price (100000, 5);
-        Room room = new Room ( "hotel", 30, price, Facility.AC );
+        Room room = new Room (1, "hotel", 30, price, Facility.AC );
         return room;
     }
 }
