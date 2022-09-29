@@ -7,15 +7,27 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Invoice extends Serializable
 {
+    public enum RoomRating {
+        NONE, BAD, NEUTRAL, GOOD
+    }
+    
+    public enum PaymentStatus {
+        FAILED, WAITING, SUCCESS
+    }
+    
     public int buyerId;
     public int renterId;
     public String time;
+    public RoomRating rating;
+    public PaymentStatus status;
     
     protected Invoice(int id, int buyerId, int renterId, String time) {
         super(id);
         this.buyerId = buyerId;
         this.renterId = renterId;
         this.time = time;
+        this.rating = RoomRating.NONE;
+        this.status = PaymentStatus.WAITING;
     }
     
     public Invoice(int id, Account buyer, Renter renter, String time) {
@@ -26,6 +38,6 @@ public class Invoice extends Serializable
     }
     
     public String print() {
-        return "Invoice ID " + id + "\nBuyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time;
+        return "Invoice ID: " + id + "\nBuyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time;
     }
 }

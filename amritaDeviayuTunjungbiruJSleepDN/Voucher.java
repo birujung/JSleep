@@ -14,17 +14,18 @@ public class Voucher extends Serializable
     public double minimum;
     private boolean used;
     
-    public Voucher(int id, String name, int code, Type type, double minimum, double cut) {
+    public Voucher(int id, String name, int code, Type type, boolean used, double minimum, double cut) {
         super(id);
         this.name = name;
         this.code = code;
         this.type = type;
+        this.used = used;
         this.minimum = minimum;
         this.cut = cut;
     }
     
     public boolean canApply(Price price) {
-        if (price.price > this.minimum && this.used == false) {
+        if (price.price >= this.minimum && this.used == false) {
             return true;
         } else {
             return false;

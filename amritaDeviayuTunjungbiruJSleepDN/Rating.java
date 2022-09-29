@@ -29,10 +29,14 @@ public class Rating
     }
     
     public long getCount() {
-        return count;
+        return this.count;
     }
     
     public long getTotal() {
-        return total;
+        return this.total;
+    }
+    
+    public String toString() {
+        return "\nTotal: " + total + "\nCount: " + count;
     }
 }

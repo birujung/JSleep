@@ -26,8 +26,8 @@ public class Payment extends Invoice
     }
     
     public String print() {
-        return "\n" + "Buyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time + "\nRoom ID: " 
-        + roomId + "\nFrom: " + from + "\nTo: " + to + "\n";
+        return "\nBuyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time + "\nRoom ID: " 
+        + roomId + "\nFrom: " + from + "\nTo: " + to;
     }
     
     public int getRoomId(int roomId) {
