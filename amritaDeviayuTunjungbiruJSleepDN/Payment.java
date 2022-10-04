@@ -1,5 +1,6 @@
 package amritaDeviayuTunjungbiruJSleepDN;
-
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 /**
  * @author Amrita Deviayu Tunjungbiru (2106636584)
@@ -7,22 +8,36 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Payment extends Invoice
 {
-    public String to;
-    public String from;
+    public Calendar to;
+    public Calendar from;
     private int roomId;
     
-    public Payment(int id, int buyerId, int renterId, String time, int roomId, String from, String to) {
-        super(id, buyerId, renterId, time);
+    public Payment(int id, int buyerId, int renterId, int roomId) {
+        super(id, buyerId, renterId);
         this.roomId = roomId;
-        this.from = from;
-        this.to = to;
+        this.from = Calendar.getInstance();
+        this.to = Calendar.getInstance();
+        this.to.add(Calendar.DATE, 2);
     }
     
-    public Payment(int id, Account buyer, Renter renter, String time, int roomId, String from, String to) {
-        super(id, buyer, renter, time);
+    public Payment(int id, Account buyer, Renter renter, int roomId) {
+        super(id, buyer, renter);
         this.roomId = roomId;
-        this.from = from;
-        this.to = to;
+        this.from = Calendar.getInstance();
+        this.to = Calendar.getInstance();
+        this.to.add(Calendar.DATE, 2);
+    }
+    
+    public String getTime() {
+        SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
+    
+        return "Formatted Date: " + SDFormat.format(this.from.getTime());
+    }
+    
+    public String getDuration() {
+        SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
+        
+        return SDFormat.format(this.from.getTime()) + " " + "-" + " " + SDFormat.format(this.to.getTime());
     }
     
     public String print() {

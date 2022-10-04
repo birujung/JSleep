@@ -5,7 +5,7 @@ package amritaDeviayuTunjungbiruJSleepDN;
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @version (27-09-2022)
  */
-public class Room extends Serializable
+public class Room extends Serializable implements FileParser
 {
     public String name;
     public int size;
@@ -29,5 +29,13 @@ public class Room extends Serializable
     
     public String toString() {
         return "\nID: " + id + "\nName: " + name + "\nAddress: " + address + "\nCity: " + city + "\nFacility: " + facility + "\nSize: " + size;
+    }
+    
+    public Object write() {
+        return null;
+    }
+    
+    public boolean read(String content) {
+        return false;
     }
 }

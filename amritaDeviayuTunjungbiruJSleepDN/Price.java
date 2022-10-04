@@ -21,7 +21,8 @@ public class Price
     }
     
     public String toString() {
-        return "\nPrice: " + price + "\nDiscount: " + discount;
+        return "" + price;
+        //return "\nPrice: " + price + "\nDiscount: " + discount;
     }
     
     /* CS Modul 2
