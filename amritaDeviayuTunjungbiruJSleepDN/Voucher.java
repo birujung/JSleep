@@ -25,7 +25,7 @@ public class Voucher extends Serializable
     }
     
     public boolean canApply(Price price) {
-        if (price.price >= this.minimum && this.used == false) {
+        if (price.price > this.minimum && this.used == false) {
             return true;
         } else {
             return false;
@@ -39,13 +39,13 @@ public class Voucher extends Serializable
                     this.cut = 100.0;
                     return 0;
                 } else {
-                    return price.price * (100 - this.cut) / 100;
+                    return (double) price.price * (100 - this.cut) / 100;
                 }
             } else if (this.type == Type.REBATE) {
                if (this.cut > price.price) {
                    this.cut = price.price;
                } else {
-                   return price.price - this.cut;
+                   return (double) price.price - this.cut;
                }
             }
         } 

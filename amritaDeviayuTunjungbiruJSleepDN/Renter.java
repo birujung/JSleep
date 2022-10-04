@@ -8,8 +8,8 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Renter extends Serializable
 {
-    public int phoneNumber;
-    public String address;
+    public int phoneNumber = 0;
+    public String address = " ";
     public String username;
     
     public Renter(int id, String username) {
@@ -20,19 +20,19 @@ public class Renter extends Serializable
     public Renter(int id, String username, String address) {
         super(id);
         this.username = username;
-        this.address = "";
+        this.address = address;
     }
     
     public Renter(int id, String username, int phoneNumber) {
         super(id);
         this.username = username;
-        this.phoneNumber = 0;
+        this.phoneNumber = phoneNumber;
     }
     
     public Renter(int id, String username, int phoneNumber, String address) {
         super(id);
         this.username = username;
-        this.phoneNumber = 0;
-        this.address = "";
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 }

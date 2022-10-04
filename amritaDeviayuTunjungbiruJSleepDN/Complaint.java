@@ -7,8 +7,8 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Complaint extends Serializable
 {
-    public String desc;
     public String date;
+    public String desc;
     
     public Complaint(int id, String date, String desc) {
         super(id);

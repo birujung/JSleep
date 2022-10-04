@@ -17,23 +17,23 @@ public class Rating
     
     public void insert(int rating) {
         this.total += rating;
-        this.count++;
+        count++;
     }
     
     public double getAverage() {
         if ( this.count == 0 ){
             return 0;
         } else {
-        return this.total / this.count;
+        return total / count;
         }
     }
     
     public long getCount() {
-        return this.count;
+        return count;
     }
     
     public long getTotal() {
-        return this.total;
+        return total;
     }
     
     public String toString() {

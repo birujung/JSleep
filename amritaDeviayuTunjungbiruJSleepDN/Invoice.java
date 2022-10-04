@@ -35,9 +35,11 @@ public class Invoice extends Serializable
         this.buyerId = buyer.id;
         this.renterId = renter.id;
         this.time = time;
+        this.rating = RoomRating.NONE;
+        this.status = PaymentStatus.WAITING;
     }
     
     public String print() {
-        return "Invoice ID: " + id + "\nBuyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time;
+        return "Invoice ID: " + id + "\nBuyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time + "\nPayment Status: " + status + "\nRating: " + rating;
     }
 }
