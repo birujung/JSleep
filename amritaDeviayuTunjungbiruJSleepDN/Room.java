@@ -12,7 +12,7 @@ public class Room extends Serializable implements FileParser
     public Price price;
     public Facility facility;
     public String address;
-    public BedType bedtype;
+    public BedType bedType;
     public City city;
     
     public Room(int id, String name, int size, Price price, Facility facility, City city, String address) {
@@ -22,19 +22,27 @@ public class Room extends Serializable implements FileParser
         this.price = price;
         this.facility = facility;
         this.address = address;
-        this.bedtype = BedType.SINGLE;
+        this.bedType = BedType.SINGLE;
         this.city = city;
         this.address = address;
     }
     
     public String toString() {
-        return "\nID: " + id + "\nName: " + name + "\nAddress: " + address + "\nCity: " + city + "\nFacility: " + facility + "\nSize: " + size;
+        return "\nID: " + id + 
+                "\nName: " + name +
+                "\nAddress: " + address +
+                "\nCity: " + city +
+                "\nFacility: " + facility +
+                "\nSize: " + size +
+                "\n(" + price + ")" +
+                "\nBed Type: " + bedType;
     }
     
+    @Override
     public Object write() {
         return null;
     }
-    
+
     public boolean read(String content) {
         return false;
     }

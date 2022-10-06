@@ -41,6 +41,11 @@ public class Invoice extends Serializable
     }
     
     public String print() {
-        return "Invoice ID: " + id + "\nBuyer ID: " + buyerId + "\nRenter ID: " + renterId + "\nTime: " + time + "\nPayment Status: " + status + "\nRating: " + rating;
+        return "Invoice ID: " + id +
+                "\nBuyer ID: " + buyerId +
+                "\nRenter ID: " + renterId +
+                "\nTime: " + time +
+                "\nPayment Status: " + status +
+                "\nRating: " + rating;
     }
 }

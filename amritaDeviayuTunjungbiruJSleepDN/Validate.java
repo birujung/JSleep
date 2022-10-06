@@ -9,16 +9,14 @@ import java.util.ArrayList;
 public class Validate
 {
     public static ArrayList filter(Price[] list, int value, boolean less) {
-        ArrayList<Price> result = new ArrayList<Price>();
+        ArrayList<Double> result = new ArrayList<>();
         for (Price price : list) {
-           if (less == true) {
+           if (less == true && price.price <= value) {
                if (price.price <= value) {
-                   result.add(price);
+                   result.add(price.price);
             }
-            } else {
-                if (price.price > value) {
-                    result.add(price);
-                }
+            } else if(less == false && price.price > value) {
+                    result.add(price.price);
             } 
         }
         return result;

@@ -19,7 +19,7 @@ public class Voucher extends Serializable implements FileParser
         this.name = name;
         this.code = code;
         this.type = type;
-        this.used = used;
+        this.used = false;
         this.minimum = minimum;
         this.cut = cut;
     }
@@ -53,9 +53,10 @@ public class Voucher extends Serializable implements FileParser
     }
     
     public boolean isUsed() {
-        return used;
+        return used = true;
     }
     
+    @Override
     public Object write() {
         return null;
     }

@@ -19,9 +19,12 @@ public class Account extends Serializable implements FileParser
     }
     
     public String toString() {
-        return "\nName: " + name + "\nEmail: " + email + "\nPassword: " + password;
+        return "\nName: " + name +
+                "\nEmail: " + email +
+                "\nPassword: " + password;
     }
     
+    @Override
     public Object write() {
         return null;
     }
