@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Validate
 {
     public static ArrayList filter(Price[] list, int value, boolean less) {
-        ArrayList<Double> result = new ArrayList<>();
+        ArrayList<Double> result = new ArrayList<Double>();
         for (Price price : list) {
            if (less == true && price.price <= value) {
                if (price.price <= value) {

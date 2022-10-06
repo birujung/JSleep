@@ -1,4 +1,6 @@
 package amritaDeviayuTunjungbiruJSleepDN;
+import java.util.Scanner;
+import java.sql.Date;
 
 
 /**
@@ -8,7 +10,26 @@ package amritaDeviayuTunjungbiruJSleepDN;
 public class JSleep
 {
     public static void main (String[] args) {
-        Payment testPayment = new Payment(2, 2, 2,2);
+        Room RoomA = JSleep.createRoom();
+        Room RoomB = JSleep.createRoom();
+        System.out.println("Membuat booking dari tanggal 15 hingga 18");
+        Date start = Date.valueOf("2022-8-15");
+        Date end = Date.valueOf("2022-8-20");
+        System.out.println(Payment.makeBooking(start, end,RoomA));
+        System.out.println("Membuat booking dari tanggal 15 hingga 18");
+        Date start2 = Date.valueOf("2022-8-18");
+        Date end2 = Date.valueOf("2022-8-20");
+        System.out.println(Payment.makeBooking(start2, end2,RoomA));
+        System.out.println("Membuat booking dari tanggal 15 hingga 18 untuk kamar berbeda");
+        Date start3 = Date.valueOf("2022-8-18");
+        Date end3 = Date.valueOf("2022-8-20");
+        System.out.println(Payment.makeBooking(start3, end3,RoomB));
+        
+        System.out.println("Membuat booking dari tanggal 20 hingga 15");
+        start = Date.valueOf("2022-8-20");
+        end = Date.valueOf("2022-8-15");
+        System.out.println(Payment.makeBooking(start, end,RoomA));
+        /*Payment testPayment = new Payment(2, 2, 2,2);
         System.out.println(testPayment.getTime());
         System.out.println(testPayment.getDuration());
         Price[] unfilteredArray = new Price[5];
@@ -24,7 +45,7 @@ public class JSleep
         System.out.println(Validate.filter(unfilteredArray, 12000,true));
         System.out.println("Above 10000.0");
         System.out.println(Validate.filter(unfilteredArray, 10000,false));
-        /*Room kamar = JSleep.createRoom();
+        Room kamar = JSleep.createRoom();
         
         System.out.println(kamar.name);
         System.out.println(kamar.size);
@@ -97,11 +118,11 @@ public class JSleep
     
     public static int getTotalPrice(int price, int numberOfNight) {
         return ((price * numberOfNight) + getAdminFee(price * numberOfNight));
-    }
+    }*/
     
     public static Room createRoom() {
         Price price = new Price (100000, 5);
-        Room room = new Room (1, "hotel", 30, price, Facility.AC );
+        Room room = new Room (1, "Room King", 30, price, Facility.AC, City.DEPOK, "Jalan Bareng Sama Ayang");
         return room;
-    }*/
+    }
 }

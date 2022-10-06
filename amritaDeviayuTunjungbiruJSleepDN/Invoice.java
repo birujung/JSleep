@@ -1,4 +1,5 @@
 package amritaDeviayuTunjungbiruJSleepDN;
+import java.util.Date;
 import java.util.Calendar;
 
 
@@ -18,7 +19,7 @@ public class Invoice extends Serializable
     
     public int buyerId;
     public int renterId;
-    public Calendar time;
+    public Date time;
     public RoomRating rating;
     public PaymentStatus status;
     
@@ -26,7 +27,7 @@ public class Invoice extends Serializable
         super(id);
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = Calendar.getInstance();
+        this.time = new Date();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }
@@ -35,7 +36,7 @@ public class Invoice extends Serializable
         super(id);
         this.buyerId = buyer.id;
         this.renterId = renter.id;
-        this.time = Calendar.getInstance();
+        this.time = new Date();
         this.rating = RoomRating.NONE;
         this.status = PaymentStatus.WAITING;
     }

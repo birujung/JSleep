@@ -1,5 +1,6 @@
 package amritaDeviayuTunjungbiruJSleepDN;
-
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * @author Amrita Deviayu Tunjungbiru (2106636584)
@@ -14,6 +15,7 @@ public class Room extends Serializable implements FileParser
     public String address;
     public BedType bedType;
     public City city;
+    public ArrayList<Date> booked;
     
     public Room(int id, String name, int size, Price price, Facility facility, City city, String address) {
         super(id);
@@ -25,6 +27,7 @@ public class Room extends Serializable implements FileParser
         this.bedType = BedType.SINGLE;
         this.city = city;
         this.address = address;
+        this.booked = new ArrayList<Date>();
     }
     
     public String toString() {
