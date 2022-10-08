@@ -10,7 +10,8 @@ import java.sql.Date;
 public class JSleep
 {
     public static void main (String[] args) {
-        Room RoomA = JSleep.createRoom();
+        System.out.print("Hello from Intellij!");
+        /*Room RoomA = JSleep.createRoom();
         Room RoomB = JSleep.createRoom();
         System.out.println("Membuat booking dari tanggal 15 hingga 18");
         Date start = Date.valueOf("2022-8-15");
