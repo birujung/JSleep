@@ -11,7 +11,7 @@ public class Payment extends Invoice
 {
     public Date to;
     public Date from;
-    private int roomId;
+    private final int roomId;
     
     public Payment(int id, int buyerId, int renterId, int roomId, Date from, Date to) {
         super(id, buyerId, renterId);
@@ -28,12 +28,14 @@ public class Payment extends Invoice
     }
     
     public static boolean availability(Date from, Date to, Room room) {
-        if(from.after(to)){
+        if(from.equals(to)){
             return false;
         }
         
         for(Date date : room.booked){
-            if(from.compareTo(date) == 0){
+            if(from.equals(date)){
+                return false;
+            } else if (from.before(date) && to.after(date)) {
                 return false;
             }
         }
