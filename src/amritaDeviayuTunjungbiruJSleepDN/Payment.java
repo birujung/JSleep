@@ -12,21 +12,21 @@ public class Payment extends Invoice
     public Date to;
     public Date from;
     private final int roomId;
-    
-    public Payment(int id, int buyerId, int renterId, int roomId, Date from, Date to) {
-        super(id, buyerId, renterId);
+
+    public Payment(int buyerId, int renterId, int roomId, Date from, Date to) {
+        super(buyerId, renterId);
         this.roomId = roomId;
         this.from = from;
         this.to = to;
     }
-    
-    public Payment(int id, Account buyer, Renter renter, int roomId, Date from, Date to) {
-        super(id, buyer, renter);
+
+    public Payment(Account buyer, Renter renter, int roomId, Date from, Date to) {
+        super(buyer, renter);
         this.roomId = roomId;
         this.from = from;
         this.to = to;
     }
-    
+
     public static boolean availability(Date from, Date to, Room room) {
         if(from.equals(to)){
             return false;
@@ -75,6 +75,6 @@ public class Payment extends Invoice
     }
     
     public int getRoomId(int roomId) {
-        return roomId;
+        return this.roomId;
     }
 }

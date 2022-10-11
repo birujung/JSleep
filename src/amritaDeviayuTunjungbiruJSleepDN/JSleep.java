@@ -1,6 +1,7 @@
 package amritaDeviayuTunjungbiruJSleepDN;
 import java.util.Scanner;
 import java.sql.Date;
+import java.util.ArrayList;
 
 
 /**
@@ -10,7 +11,13 @@ import java.sql.Date;
 public class JSleep
 {
     public static void main (String[] args) {
-        /*System.out.print("Hello from Intellij!");*/
+        ArrayList <Room> RoomSerialized = new ArrayList<Room>();
+
+        for(int i = 0; i < 5; i++) {
+            RoomSerialized.add(i, JSleep.createRoom());
+            System.out.println(RoomSerialized.get(i).toString());
+        }
+        /*System.out.print("Hello from Intellij!");
         Room RoomA = JSleep.createRoom();
         Room RoomB = JSleep.createRoom();
         System.out.println("Membuat booking dari tanggal 15 hingga 18");
@@ -122,8 +129,8 @@ public class JSleep
     }*/
     
     public static Room createRoom() {
-        Price price = new Price (100000, 5);
-        Room room = new Room (1, "Room King", 30, price, Facility.AC, City.DEPOK, "Jalan Bareng Sama Ayang");
+        Price price = new Price (100000, 0.5);
+        Room room = new Room ("Hotel", 30, price, Facility.AC, City.DEPOK, "Jalan Bareng Sama Ayang");
         return room;
     }
 }
