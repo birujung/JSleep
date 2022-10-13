@@ -18,7 +18,6 @@ public class Serializable implements Comparable<Serializable>
             counter += 1;
         }
         mapCounter.put(getClass(), counter);
-//        counter = counter == null ? 0 : counter + 1;
 
         this.id = counter;
     }

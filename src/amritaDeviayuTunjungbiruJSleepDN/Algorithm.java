@@ -7,6 +7,39 @@ import java.io.*;
  * @version (11-10-2022)
  */
 public class Algorithm {
+    public static <T> List<T> collect(Iterable<T> iterable, T value) {
+        Predicate<T> predicate = value::equals;
+        return collect(iterable.iterator(), predicate);
+    }
+
+    public static <T> List<T> collect(Iterable<T> iterable, Predicate<T> pred) {
+        return collect(iterable.iterator(), pred);
+    }
+
+    public static <T> List<T> collect(T[] array, T value) {
+        Predicate<T> predicate = value::equals;
+        return collect(Arrays.stream(array).iterator(), predicate);
+    }
+
+    public static <T> List<T> collect(Iterator<T> iterator, T value) {
+        Predicate<T> predicate = value::equals;
+        return collect(iterator, predicate);
+    }
+
+    public static <T> List<T> collect(T[] array, Predicate<T> pred) {
+        return collect(Arrays.stream(array).iterator(), pred);
+    }
+
+    public static <T> List<T> collect(Iterator<T> iterator, Predicate<T> pred) {
+        List<T> list = new ArrayList<T>();
+        while(iterator.hasNext()) {
+            if(pred.predicate(iterator.next())) {
+                list.add(iterator.next());
+            }
+        }
+        return list;
+    }
+
     public static <T> int count(Iterator<T> iterator, T value) {
         final Predicate<T> pred  = value::equals;
         return count(iterator, pred);
@@ -110,5 +143,29 @@ public class Algorithm {
             }
         }
         return null;
+    }
+
+    public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred) {
+        Iterator<T> iterator = Arrays.stream(array).iterator();
+        return paginate(iterator, page, pageSize, pred);
+    }
+
+    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred) {
+        final Iterator<T> it = iterable.iterator();
+        return paginate(it, page, pageSize, pred);
+    }
+
+    public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
+        List<T> list = new ArrayList<T>();
+        int count = 0;
+        while(iterator.hasNext()) {
+            if(pred.predicate(iterator.next())) {
+                if(page*pageSize <= count && count < ((page*pageSize) + pageSize)) {
+                    list.add(iterator.next());
+                }
+                count++;
+            }
+        }
+        return list;
     }
 }
