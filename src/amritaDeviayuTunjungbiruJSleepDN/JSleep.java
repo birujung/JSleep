@@ -1,7 +1,10 @@
 package amritaDeviayuTunjungbiruJSleepDN;
-import java.util.Scanner;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import com.google.gson.*;
 
 
 /**
@@ -10,13 +13,28 @@ import java.util.ArrayList;
  */
 public class JSleep
 {
+    class Country {
+        public String name;
+        public int population;
+        public List<String> listOfStates;
+    }
     public static void main (String[] args) {
-        ArrayList <Room> RoomSerialized = new ArrayList<Room>();
+        // sesuaikan dengan lokasi di sistem kepada city.json
+        String filepath = "/Users/tunjung/coding/Java/JSleep/src/city.json";
+        Gson gson = new Gson();
 
-        for(int i = 0; i < 5; i++) {
-            RoomSerialized.add(i, JSleep.createRoom());
-            System.out.println(RoomSerialized.get(i).toString());
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filepath));
+            Country input = gson.fromJson(br, Country.class);
+            System.out.println("name: " + input.name);
+            System.out.println("populatioon: " + input.population);
+            System.out.println("states :");
+            input.listOfStates.forEach (state -> System.out.println(state));
         }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
         /*System.out.print("Hello from Intellij!");
         Room RoomA = JSleep.createRoom();
         Room RoomB = JSleep.createRoom();
@@ -128,9 +146,9 @@ public class JSleep
         return ((price * numberOfNight) + getAdminFee(price * numberOfNight));
     }*/
     
-    public static Room createRoom() {
+    /*public static Room createRoom() {
         Price price = new Price (100000, 0.5);
         Room room = new Room ("Hotel", 30, price, Facility.AC, City.DEPOK, "Jalan Bareng Sama Ayang");
         return room;
     }
-}
+}*/
