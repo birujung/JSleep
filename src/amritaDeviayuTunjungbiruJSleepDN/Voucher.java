@@ -5,7 +5,7 @@ package amritaDeviayuTunjungbiruJSleepDN;
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @version (27-09-2022)
  */
-public class Voucher extends Serializable implements FileParser
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;
@@ -54,8 +54,7 @@ public class Voucher extends Serializable implements FileParser
     public boolean isUsed() {
         return used = true;
     }
-    
-    @Override
+
     public Object write() {
         return null;
     }

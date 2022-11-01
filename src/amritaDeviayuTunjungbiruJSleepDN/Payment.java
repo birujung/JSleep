@@ -1,7 +1,9 @@
 package amritaDeviayuTunjungbiruJSleepDN;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 /**
  * @author Amrita Deviayu Tunjungbiru (2106636584)
@@ -27,15 +29,20 @@ public class Payment extends Invoice
         this.to = to;
     }
 
+    public int getRoomId(int roomId) {
+        return this.roomId;
+    }
+
     public static boolean availability(Date from, Date to, Room room) {
-        if(from.equals(to)){
+        Calendar start = Calendar.getInstance();
+        start.setTime(from);
+        Calendar end = Calendar.getInstance();
+        end.setTime(to);
+        if(start.after(end) || start.equals(end)){
             return false;
         }
-        
-        for(Date date : room.booked){
-            if(from.equals(date)){
-                return false;
-            } else if (from.before(date) && to.after(date)) {
+        for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
+            if(room.booked.contains(date)){
                 return false;
             }
         }
@@ -45,24 +52,21 @@ public class Payment extends Invoice
     public String getTime() {
         SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
     
-        return "Formatted Date: " + SDFormat.format(this.from.getTime());
+        return "Formatted Date: " + SDFormat.format(time.getTime());
     }
     
     public static boolean makeBooking(Date from, Date to, Room room) {
-        if(to.before(from)) {
-            return false;
-        }
-
-        if(availability(from, to, room)) {
-            while (from.before(to)){
-                room.booked.add(from);
-                Calendar c = Calendar.getInstance();
-                c.setTime(from);
-                c.add(Calendar.DATE, 1);
-                from = c.getTime();
+        if(availability(from, to, room)){
+            Calendar start = Calendar.getInstance();
+            start.setTime(from);
+            Calendar end = Calendar.getInstance();
+            end.setTime(to);
+            for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
+                room.booked.add(date);
             }
             return true;
-        }return false;
+        }
+        return false;
     }
     
     public String print() {
@@ -72,9 +76,5 @@ public class Payment extends Invoice
                 "\nRoom ID: " + roomId +
                 "\nFrom: " + from +
                 "\nTo: " + to;
-    }
-    
-    public int getRoomId(int roomId) {
-        return this.roomId;
     }
 }

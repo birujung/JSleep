@@ -11,15 +11,59 @@ import com.google.gson.*;
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @version (27-09-2022)
  */
-public class JSleep
-{
-    class Country {
+public class JSleep {
+    public static void main(String[] args) {
+        Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
+        Renter testRegexFail = new Renter("netlab", "081", "Jalan");
+        System.out.println(testRegex.validate());
+        System.out.println(testRegexFail.validate());
+
+        try {
+            String filepath = "/Users/tunjung/coding/Java/JSleep/src/json/randomRoomList.json";
+
+            JsonTable<Room> tableRoom =  new JsonTable<>(Room.class, filepath);
+            List<Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
+            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+
+    public static <Room> List<Room> filterByCity(List<Room> list, String search, int page, int pageSize) {
+       // return Algorithm.<Room>paginate(list, page, pageSize, i -> i.city.toString().toLowerCase().contains(search.toLowerCase()));
+        return list;
+    }
+
+    public static <Room> List<Room> filterByPrice(List<Room> list, double minPrice, double maxPrice) {
+        /*List<Room> filteredList = new ArrayList<Room>();
+
+        for(Room check : list) {
+            if (check.min == minPrice) {
+                filteredList.add(check);
+            }
+        }
+        return Algorithm.paginate(filteredList, minPrice, maxPrice,pred -> true);*/
+        return list;
+    }
+
+    public static <Room> List<Room> filterByAccoundId(List<Room> list, int accountId, int page, int pageSize) {
+        /*List<Room> filteredList = new ArrayList<Room>();
+
+        for(Room check : list) {
+            if (check.accountId == accountId) {
+                filteredList.add(check);
+            }
+        }
+        return Algorithm.paginate(filteredList, page, pageSize,pred -> true);*/
+        return list;
+    }
+}
+    /*class Country {
         public String name;
         public int population;
         public List<String> listOfStates;
     }
-    public static void main (String[] args) {
-        // sesuaikan dengan lokasi di sistem kepada city.json
+    // sesuaikan dengan lokasi di sistem kepada city.json
         String filepath = "/Users/tunjung/coding/Java/JSleep/src/city.json";
         Gson gson = new Gson();
 
@@ -33,8 +77,7 @@ public class JSleep
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
-    }
+        }*/
         /*System.out.print("Hello from Intellij!");
         Room RoomA = JSleep.createRoom();
         Room RoomB = JSleep.createRoom();
@@ -96,7 +139,7 @@ public class JSleep
         System.out.println(testAccount.toString());
         System.out.println(testPrice.toString());
         System.out.println(testRating.toString()); */
-    }
+
     /*
     public static int getHotelId() {
         return 0;

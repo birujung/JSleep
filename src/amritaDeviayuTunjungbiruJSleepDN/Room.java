@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @version (27-09-2022)
  */
-public class Room extends Serializable implements FileParser
+public class Room extends Serializable
 {
     public String name;
     public int size;
@@ -15,14 +15,15 @@ public class Room extends Serializable implements FileParser
     public String address;
     public BedType bedType;
     public City city;
+    public int accountId;
     public ArrayList<Date> booked;
     
-    public Room(String name, int size, Price price, Facility facility, City city, String address) {
+    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address) {
+        this.accountId = accountId;
         this.name = name;
         this.size = size;
         this.price = price;
         this.facility = facility;
-        this.address = address;
         this.bedType = BedType.SINGLE;
         this.city = city;
         this.address = address;
@@ -39,8 +40,7 @@ public class Room extends Serializable implements FileParser
                 "\n(" + price + ")" +
                 "\nBed Type: " + bedType;
     }
-    
-    @Override
+
     public Object write() {
         return null;
     }

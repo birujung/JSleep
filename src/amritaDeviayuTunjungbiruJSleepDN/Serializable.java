@@ -7,8 +7,8 @@ import java.util.HashMap;
  */
 public class Serializable implements Comparable<Serializable>
 {
-    public static int id;
-    private static HashMap<Class<?>, Integer> mapCounter = new HashMap<>();
+    public final int id;
+    private static HashMap<Class<?>, Integer> mapCounter = new HashMap<Class<?>, Integer>();
 
     protected Serializable() {
         Integer counter = mapCounter.get(getClass());
@@ -18,7 +18,6 @@ public class Serializable implements Comparable<Serializable>
             counter += 1;
         }
         mapCounter.put(getClass(), counter);
-
         this.id = counter;
     }
 
@@ -38,7 +37,6 @@ public class Serializable implements Comparable<Serializable>
         return mapCounter.put(kelas, id);
     }
 
-    @Override
     public int compareTo(Serializable lain) {
         return Integer.compare(this.id, lain.id);
     }

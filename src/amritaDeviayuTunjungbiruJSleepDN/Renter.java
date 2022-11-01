@@ -1,5 +1,6 @@
 package amritaDeviayuTunjungbiruJSleepDN;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Amrita Deviayu Tunjungbiru (2106636584)
@@ -8,27 +9,33 @@ package amritaDeviayuTunjungbiruJSleepDN;
  */
 public class Renter extends Serializable
 {
-    public int phoneNumber = 0;
+    public String phoneNumber = " ";
     public String address = " ";
     public String username;
+    public static final String REGEX_PHONE = "^(?:\\+?(\\d{3}))?(\\d{3})(\\d{3})(\\d{0,3}$)";
+    public static final String REGEX_NAME = "[A-Za-z0-9]{4,20}";
     
-    public Renter(String username) {
-        this.username = username;
-    }
-    
-    public Renter(String username, String address) {
+    public Renter(String username, String phoneNumber, String address) {
         this.username = username;
         this.address = address;
-    }
-    
-    public Renter(String username, int phoneNumber) {
-        this.username = username;
         this.phoneNumber = phoneNumber;
     }
-    
-    public Renter(String username, int phoneNumber, String address) {
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
+
+    public boolean validate() {
+        //untuk phone number
+        Pattern patternNum = Pattern.compile(REGEX_PHONE);
+        Matcher matcherNum = patternNum.matcher(phoneNumber);
+        boolean matchFoundNum = matcherNum.find();
+
+        //untuk username
+        Pattern patternName = Pattern.compile(REGEX_NAME);
+        Matcher matcherName = patternName.matcher(username);
+        boolean matchFoundName = matcherName.find();
+
+        if (matchFoundNum && matchFoundName) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

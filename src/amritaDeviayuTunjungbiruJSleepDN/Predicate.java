@@ -5,5 +5,5 @@ package amritaDeviayuTunjungbiruJSleepDN;
  * @version (11-10-2022)
  */
 public interface Predicate<T> {
-    public boolean predicate(T value);
+    public abstract boolean predicate(T arg);
 }

@@ -7,31 +7,36 @@ import java.io.*;
  * @version (11-10-2022)
  */
 public class Algorithm {
+    private Algorithm() {
+    }
+
     public static <T> List<T> collect(Iterable<T> iterable, T value) {
-        Predicate<T> predicate = value::equals;
-        return collect(iterable.iterator(), predicate);
+        final Iterator<T> it = iterable.iterator();
+        return collect(it, value);
     }
 
     public static <T> List<T> collect(Iterable<T> iterable, Predicate<T> pred) {
-        return collect(iterable.iterator(), pred);
+        final Iterator<T> it = iterable.iterator();
+        return collect(it, pred);
     }
 
     public static <T> List<T> collect(T[] array, T value) {
-        Predicate<T> predicate = value::equals;
-        return collect(Arrays.stream(array).iterator(), predicate);
+        final Iterator<T> it = Arrays.stream(array).iterator();
+        return collect(it, value);
     }
 
     public static <T> List<T> collect(Iterator<T> iterator, T value) {
-        Predicate<T> predicate = value::equals;
-        return collect(iterator, predicate);
+        final Predicate<T> pred = value::equals;
+        return collect(iterator, pred);
     }
 
     public static <T> List<T> collect(T[] array, Predicate<T> pred) {
-        return collect(Arrays.stream(array).iterator(), pred);
+        final Iterator<T> it = Arrays.stream(array).iterator();
+        return collect(it, pred);
     }
 
     public static <T> List<T> collect(Iterator<T> iterator, Predicate<T> pred) {
-        List<T> list = new ArrayList<T>();
+        ArrayList<T> list = new ArrayList<>();
         while(iterator.hasNext()) {
             if(pred.predicate(iterator.next())) {
                 list.add(iterator.next());
@@ -102,8 +107,7 @@ public class Algorithm {
 
     public static <T> boolean exists(Iterator<T> iterator, Predicate<T> pred) {
         while(iterator.hasNext()) {
-            T current = iterator.next();
-            if(pred.predicate(current)) {
+            if(pred.predicate(iterator.next())) {
                 return true;
             }
         }
@@ -137,16 +141,15 @@ public class Algorithm {
 
     public static <T> T find(Iterator<T> iterator, Predicate<T> pred) {
         while(iterator.hasNext()) {
-            T object = iterator.next();
-            if(pred.predicate(object)) {
-                return object;
+            if(pred.predicate(iterator.next())) {
+                return iterator.next();
             }
         }
         return null;
     }
 
     public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred) {
-        Iterator<T> iterator = Arrays.stream(array).iterator();
+        final Iterator<T> iterator = Arrays.stream(array).iterator();
         return paginate(iterator, page, pageSize, pred);
     }
 
@@ -156,16 +159,21 @@ public class Algorithm {
     }
 
     public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
-        List<T> list = new ArrayList<T>();
-        int count = 0;
-        while(iterator.hasNext()) {
-            if(pred.predicate(iterator.next())) {
-                if(page*pageSize <= count && count < ((page*pageSize) + pageSize)) {
-                    list.add(iterator.next());
-                }
-                count++;
-            }
+        int occurences = 0;
+        int startingIdx = page * pageSize;
+        List<T> pageList = new ArrayList<>(pageSize);
+        // skip first occurrences of element
+        while (iterator.hasNext() && occurences < startingIdx) {
+            T obj = iterator.next();
+            if (pred.predicate(obj))
+                ++occurences;
         }
-        return list;
+        // get the next occurrences of element
+        while (iterator.hasNext() && pageList.size() < pageSize) {
+            T obj = iterator.next();
+            if (pred.predicate(obj))
+                pageList.add(obj);
+        }
+        return pageList;
     }
 }
