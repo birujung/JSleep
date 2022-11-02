@@ -29,33 +29,16 @@ public class JSleep {
         }
     }
 
-    public static <Room> List<Room> filterByCity(List<Room> list, String search, int page, int pageSize) {
-       // return Algorithm.<Room>paginate(list, page, pageSize, i -> i.city.toString().toLowerCase().contains(search.toLowerCase()));
-        return list;
+    public static List<Room> filterByCity(List<Room> list, String search, int page, int pageSize){
+        return Algorithm.<Room>paginate(list, page, pageSize, i -> i.city == City.valueOf(search.toUpperCase()));
     }
 
-    public static <Room> List<Room> filterByPrice(List<Room> list, double minPrice, double maxPrice) {
-        /*List<Room> filteredList = new ArrayList<Room>();
-
-        for(Room check : list) {
-            if (check.min == minPrice) {
-                filteredList.add(check);
-            }
-        }
-        return Algorithm.paginate(filteredList, minPrice, maxPrice,pred -> true);*/
-        return list;
+    public static List<Room> filterByAccountId(List<Room> list, int accountId, int page, int pageSize){
+        return Algorithm.<Room>paginate(list, page, pageSize, i -> i.accountId == accountId);
     }
 
-    public static <Room> List<Room> filterByAccoundId(List<Room> list, int accountId, int page, int pageSize) {
-        /*List<Room> filteredList = new ArrayList<Room>();
-
-        for(Room check : list) {
-            if (check.accountId == accountId) {
-                filteredList.add(check);
-            }
-        }
-        return Algorithm.paginate(filteredList, page, pageSize,pred -> true);*/
-        return list;
+    public static List<Room> filterByPrice(List<Room> list, double minPrice, double maxPrice){
+        return Algorithm.<Room>collect(list, i -> (i.price.price <= maxPrice) && (i.price.price >= minPrice));
     }
 }
     /*class Country {
