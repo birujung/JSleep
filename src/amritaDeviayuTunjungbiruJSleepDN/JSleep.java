@@ -13,19 +13,23 @@ import com.google.gson.*;
  */
 public class JSleep {
     public static void main(String[] args) {
-        Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
-        Renter testRegexFail = new Renter("netlab", "081", "Jalan");
+        Account testRegex = new Account("Netlab_", "bisma@gmail.com", "JokiNaufalFaza88");
+        Account testRegexFail = new Account("A", "bisma.alif@ui.ac.id", "JokiMelchiorNathan");
         System.out.println(testRegex.validate());
         System.out.println(testRegexFail.validate());
 
         try {
-            String filepath = "/Users/tunjung/coding/Java/JSleep/src/json/randomRoomList.json";
+            String filepath = "/Users/tunjung/coding/Java/JSleep/src/json/account.json";
 
-            JsonTable<Room> tableRoom =  new JsonTable<>(Room.class, filepath);
-            List<Room> filterTableRoom = filterByCity(tableRoom, "medan", 0, 5);
-            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+            JsonTable<Account> tableAccount = new JsonTable<Account>(Account.class, filepath);
+            tableAccount.add(new Account("Name", "Email", "Password"));
+            tableAccount.writeJson();
         } catch (Throwable t) {
             t.printStackTrace();
+        }
+
+        for(int i = 0; i < 10; i++) {
+            ThreadingObject thread = new ThreadingObject("Thread " + i);
         }
     }
 
