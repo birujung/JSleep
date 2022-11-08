@@ -1,4 +1,4 @@
-package com.amritaDeviayuTunjungbiruJSleepDN;
+package com.amritaDeviayuTunjungbiruJSleepDN.dbjson;
 import java.util.HashMap;
 
 /**

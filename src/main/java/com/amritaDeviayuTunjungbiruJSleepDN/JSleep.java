@@ -1,5 +1,6 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
 
+import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.JsonDBEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
@@ -17,7 +18,13 @@ import com.google.gson.*;
 @SpringBootApplication
 public class JSleep {
     public static void main(String[] args) {
+        JsonDBEngine.Run(JSleep.class);
         SpringApplication.run(JSleep.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
+    }
+}
+    /*
+    SpringApplication.run(JSleep.class, args);
         Account testRegex = new Account("Netlab_", "bisma@gmail.com", "JokiNaufalFaza88");
         Account testRegexFail = new Account("A", "bisma.alif@ui.ac.id", "JokiMelchiorNathan");
         System.out.println(testRegex.validate());
@@ -36,7 +43,6 @@ public class JSleep {
         for(int i = 0; i < 10; i++) {
             ThreadingObject thread = new ThreadingObject("Thread " + i);
         }
-    }
 
     public static List<Room> filterByCity(List<Room> list, String search, int page, int pageSize){
         return Algorithm.<Room>paginate(list, page, pageSize, i -> i.city == City.valueOf(search.toUpperCase()));
@@ -50,7 +56,7 @@ public class JSleep {
         return Algorithm.<Room>collect(list, i -> (i.price.price <= maxPrice) && (i.price.price >= minPrice));
     }
 }
-    /*class Country {
+    class Country {
         public String name;
         public int population;
         public List<String> listOfStates;

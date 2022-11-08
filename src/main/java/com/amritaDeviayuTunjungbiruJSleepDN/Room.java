@@ -1,4 +1,5 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
+import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 

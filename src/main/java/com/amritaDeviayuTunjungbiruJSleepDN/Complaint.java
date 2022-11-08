@@ -1,5 +1,5 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
-
+import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.Serializable;
 
 /**
  * @author Amrita Deviayu Tunjungbiru (2106636584)
