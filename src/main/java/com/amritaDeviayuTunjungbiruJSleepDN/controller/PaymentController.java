@@ -1,14 +1,16 @@
 package com.amritaDeviayuTunjungbiruJSleepDN.controller;
 
+import com.amritaDeviayuTunjungbiruJSleepDN.Account;
 import com.amritaDeviayuTunjungbiruJSleepDN.Payment;
 import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.JsonTable;
 import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.JsonAutowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/payment")
 public class PaymentController implements BasicGetController<Payment> {
-    @JsonAutowired(value = Payment.class,filepath = "/Users/tunjung/coding/Java/JSleep/src/main/java/com/amritaDeviayuTunjungbiruJSleepDN/dbjson/JsonAutowired" )
+    @JsonAutowired(value = Account.class,filepath = "/Users/tunjung/coding/Java/JSleep/src/json/payment.json" )
     public static JsonTable<Payment> paymentTable;
 
     @GetMapping
@@ -22,10 +24,11 @@ public class PaymentController implements BasicGetController<Payment> {
                     @RequestParam int buyerId,
                     @RequestParam int renterId,
                     @RequestParam int roomId,
-                    @RequestParam String from,
-                    @RequestParam String to
+                    @RequestParam Date from,
+                    @RequestParam Date to
             ) {
-        return null;
+        paymentTable.add(new Payment(buyerId,renterId,roomId,from,to));
+        return new Payment(buyerId,renterId,roomId,from,to);
     };
 
     @PostMapping("/{id}accept")

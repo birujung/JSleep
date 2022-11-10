@@ -48,13 +48,7 @@ public class Payment extends Invoice
         }
         return true;
     }
-    
-    public String getTime() {
-        SimpleDateFormat SDFormat = new SimpleDateFormat("dd MMMM yyyy");
-    
-        return "Formatted Date: " + SDFormat.format(time.getTime());
-    }
-    
+
     public static boolean makeBooking(Date from, Date to, Room room) {
         if(availability(from, to, room)){
             Calendar start = Calendar.getInstance();
@@ -68,11 +62,10 @@ public class Payment extends Invoice
         }
         return false;
     }
-    
+
     public String print() {
         return "\nBuyer ID: " + buyerId +
                 "\nRenter ID: " + renterId +
-                "\nTime: " + time +
                 "\nRoom ID: " + roomId +
                 "\nFrom: " + from +
                 "\nTo: " + to;

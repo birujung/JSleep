@@ -12,6 +12,8 @@ public class Account extends Serializable
     public String name;
     public String email;
     public String password;
+    public double balance;
+    public Renter renter;
     public static final String REGEX_EMAIL = "^(?=.*{1,}@)[A-Za-z0-9]+@[^-][A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
 
@@ -20,12 +22,14 @@ public class Account extends Serializable
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance = 0;
     }
     
     public String toString() {
         return "\nName: " + name +
                 "\nEmail: " + email +
-                "\nPassword: " + password;
+                "\nPassword: " + password +
+                "\nBalance: " + balance;
     }
 
     public boolean validate() {
