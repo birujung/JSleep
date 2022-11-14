@@ -12,6 +12,7 @@ public class RoomController implements BasicGetController<Room> {
     @JsonAutowired(value = Room.class,filepath = "/Users/tunjung/coding/Java/JSleep/src/json/room.json" )
     public static JsonTable<Room> roomTable;
 
+    @Override
     public JsonTable<Room> getJsonTable(){
         return roomTable;
     }
@@ -23,7 +24,7 @@ public class RoomController implements BasicGetController<Room> {
                     @RequestParam int page,
                     @RequestParam int pageSize
             ) {
-        return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, pred -> pred.id == id);
+        return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, pred -> pred.accountId == id);
     }
 
     @PostMapping("/create")
@@ -32,13 +33,19 @@ public class RoomController implements BasicGetController<Room> {
                     @RequestParam int accountId,
                     @RequestParam String name,
                     @RequestParam int size,
-                    @RequestParam Price price,
+                    @RequestParam int price,
                     @RequestParam Facility facility,
                     @RequestParam City city,
                     @RequestParam String address
             ) {
-        Room room = new Room(accountId, name, size, price, facility, city, address);
-        roomTable.add(room);
-        return room;
+        Account check = Algorithm.<Account>find(AccountController.accountTable, pred -> pred.id == accountId && pred.renter != null);
+        if (check != null) {
+            Room room = new Room(accountId, name, size, new Price(price), facility, city, address);
+            roomTable.add(room);
+            return room;
+        } else {
+            return null;
+        }
+
     }
 }

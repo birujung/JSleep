@@ -1,6 +1,6 @@
 package com.amritaDeviayuTunjungbiruJSleepDN.controller;
 
-import com.amritaDeviayuTunjungbiruJSleepDN.Algorithm;
+import com.amritaDeviayuTunjungbiruJSleepDN.*;
 import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.Serializable;
 import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.*;
