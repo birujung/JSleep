@@ -1,6 +1,5 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
 import java.util.*;
-import java.io.*;
 
 /**
  * @author Amrita Deviayu Tunjungbiru (2106636584)
@@ -113,17 +112,6 @@ public class Algorithm {
         }
         return false;
     }
-
-    public static <T> T find(T[] array, Predicate<T> pred) {
-        final Iterator<T> it = Arrays.stream(array).iterator();
-        return find(it, pred);
-    }
-
-    public static <T> T find(Iterable<T> iterable, Predicate<T> pred) {
-        final Iterator<T> it = iterable.iterator();
-        return find(it, pred);
-    }
-
     public static <T> T find(T[] array, T value) {
         final Iterator<T> it = Arrays.stream(array).iterator();
         return find(it, value);
@@ -139,11 +127,21 @@ public class Algorithm {
         return find(iterator, pred);
     }
 
+    public static <T> T find(T[] array, Predicate<T> pred) {
+        final Iterator<T> it = Arrays.stream(array).iterator();
+        return find(it, pred);
+    }
+
+    public static <T> T find(Iterable<T> iterable, Predicate<T> pred) {
+        final Iterator<T> it = iterable.iterator();
+        return find(it, pred);
+    }
+
     public static <T> T find(Iterator<T> iterator, Predicate<T> pred) {
-        while(iterator.hasNext()) {
-            if(pred.predicate(iterator.next())) {
-                return iterator.next();
-            }
+        while (iterator.hasNext()) {
+            T current = iterator.next();
+            if (pred.predicate(current))
+                return current;
         }
         return null;
     }

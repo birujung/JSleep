@@ -1,1 +1,1 @@
-[{"name":"Biru","size":1,"price":{"price":250000.0,"discount":0.0},"facility":"AC","address":"jalan margonda raya 1","bedType":"SINGLE","city":"JAKARTA","accountId":1,"booked":[],"id":0}]
+[{"name":"Bisma Alif Alghifari","size":1,"price":{"price":150000.0,"discount":0.0},"facility":["AC","SwimmingPool"],"address":"jalan margonda raya 1","bedType":"SINGLE","city":"JAKARTA","accountId":2,"booked":[],"id":0}]

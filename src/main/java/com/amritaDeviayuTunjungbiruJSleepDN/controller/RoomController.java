@@ -1,8 +1,7 @@
 package com.amritaDeviayuTunjungbiruJSleepDN.controller;
 
 import com.amritaDeviayuTunjungbiruJSleepDN.*;
-import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.JsonTable;
-import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.JsonAutowired;
+import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -17,7 +16,7 @@ public class RoomController implements BasicGetController<Room> {
         return roomTable;
     }
 
-    @GetMapping("/{id}renter")
+    @GetMapping("/{id}/renter")
     List<Room> getRoomByRenter
             (
                     @PathVariable int id,
@@ -34,18 +33,42 @@ public class RoomController implements BasicGetController<Room> {
                     @RequestParam String name,
                     @RequestParam int size,
                     @RequestParam int price,
-                    @RequestParam Facility facility,
+                    @RequestParam ArrayList<Facility> facility,
                     @RequestParam City city,
-                    @RequestParam String address
+                    @RequestParam String address,
+                    @RequestParam BedType bedType
             ) {
         Account check = Algorithm.<Account>find(AccountController.accountTable, pred -> pred.id == accountId && pred.renter != null);
         if (check != null) {
-            Room room = new Room(accountId, name, size, new Price(price), facility, city, address);
+            Room room = new Room(accountId, name, size, new Price(price), facility, city, address, bedType);
             roomTable.add(room);
             return room;
         } else {
             return null;
         }
-
     }
+
+    @GetMapping("/getAllRoom")
+    public List<Room> getAllRoom
+            (
+                    @RequestParam int page,
+                    @RequestParam int pageSize
+            ) {
+//        List<Room> collectRoom = Algorithm.<Room>collect(getJsonTable(), pred -> true);
+//        List<Room> availableRoom = new ArrayList<>();
+//        for(Room room : collectRoom){
+//            if(!room.isUsed()){
+//                availableRoom.add(room);
+//            }
+//        }
+        return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, pred -> true);
+    }
+
+//    @GetMapping("/{id}/isUsed")
+//    boolean isUsed (
+//            @PathVariable int id
+//    ) {
+//        Room check = Algorithm.<Room>find(roomTable, pred -> pred.id == id);
+//        return check.isUsed();
+//    }
 }
