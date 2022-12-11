@@ -14,7 +14,6 @@ import java.util.Date;
  * @version 1.0
  * @see Invoice
  */
-
 public class Payment extends Invoice {
     /**
      *  The start date of the booking
