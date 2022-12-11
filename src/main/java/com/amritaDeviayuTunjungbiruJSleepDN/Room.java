@@ -51,6 +51,7 @@ public class Room extends Serializable
      * @param bedType    The type of bed in the room.
      */
     public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address, BedType bedType) {
+        super();
         this.accountId = accountId;
         this.name = name;
         this.size = size;

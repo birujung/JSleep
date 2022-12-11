@@ -5,17 +5,45 @@ import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
+/**
+ * A REST controller that provides methods to create, get room by renter, get all room, and filter the room list.
+ *
+ * It implements the {@link BasicGetController} interface and uses a JsonTable of Room objects to store
+ * room information.
+ *
+ * @author Amrita Deviayu Tunjungbiru (2106636584)
+ * @see Room
+ */
 @RestController
 @RequestMapping("/room")
 public class RoomController implements BasicGetController<Room> {
+    /**
+     * A `JsonTable` that stores room data.
+     *
+     * @JsonAutowired indicates that this field should be initialized with data from the specified file.
+     */
     @JsonAutowired(value = Room.class,filepath = "/Users/tunjung/coding/Java/JSleep/src/json/room.json" )
     public static JsonTable<Room> roomTable;
 
+    /**
+     * Returns the `JsonTable` object that stores the room.
+     *
+     * @return The `JsonTable` object that stores the room.
+     */
     @Override
     public JsonTable<Room> getJsonTable(){
         return roomTable;
     }
 
+    /**
+     * This method is used to get all room by renter.
+     * This method uses the paginate method from the Algorithm class to paginate the results.
+     *
+     * @param id The ID of the room.
+     * @param page The page number to be return.
+     * @param pageSize The number of room objects to return on each page.
+     * @return The room for the specified renter ID.
+     */
     @GetMapping("/{id}/renter")
     List<Room> getRoomByRenter
             (
@@ -26,6 +54,19 @@ public class RoomController implements BasicGetController<Room> {
         return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, pred -> pred.accountId == id);
     }
 
+    /**
+     * Create a new room to the system using the accountId, name, size, price, facility, city, address, & bed type.
+     *
+     * @param accountId The ID the account wants to create room.
+     * @param name The name of the room the account wants to create.
+     * @param size The size of the room.
+     * @param price The price of the room.
+     * @param facility The facilities provided with the room.
+     * @param city The city the room located to.
+     * @param address The address of the room.
+     * @param bedType The bed type in the room.
+     * @return The created `Room` object if the creation is successful, or `null` otherwise.
+     */
     @PostMapping("/create")
     public Room create
             (
@@ -48,27 +89,76 @@ public class RoomController implements BasicGetController<Room> {
         }
     }
 
+    /**
+     * This method is used to get all room.
+     * This method uses the paginate method from the Algorithm class to paginate the results.
+     *
+     * @param page The page number to be return.
+     * @param pageSize The number of room objects to return on each page.
+     * @return All room that already created.
+     */
     @GetMapping("/getAllRoom")
     public List<Room> getAllRoom
             (
                     @RequestParam int page,
                     @RequestParam int pageSize
             ) {
-//        List<Room> collectRoom = Algorithm.<Room>collect(getJsonTable(), pred -> true);
-//        List<Room> availableRoom = new ArrayList<>();
-//        for(Room room : collectRoom){
-//            if(!room.isUsed()){
-//                availableRoom.add(room);
-//            }
-//        }
         return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, pred -> true);
     }
 
-//    @GetMapping("/{id}/isUsed")
-//    boolean isUsed (
-//            @PathVariable int id
-//    ) {
-//        Room check = Algorithm.<Room>find(roomTable, pred -> pred.id == id);
-//        return check.isUsed();
-//    }
+    /**
+     * This method is used to filter room by City.
+     * This method uses the paginate method from the Algorithm class to paginate the results.
+     *
+     * @param page The page number to be return.
+     * @param pageSize The number of room objects to return on each page.
+     * @param city The city that the user search for the room.
+     * @return The room for the specified City.
+     */
+    @GetMapping("/filterByCity")
+    List<Room> filterByCity(
+            @RequestParam int page,
+            @RequestParam int pageSize,
+            @RequestParam City city
+    ){
+        return Algorithm.<Room>paginate(getJsonTable(),page,pageSize,kamar -> kamar.city == city);
+    }
+
+    /**
+     * This method is used to filter room by Name.
+     * This method uses the paginate method from the Algorithm class to paginate the results.
+     *
+     * @param page The page number to be return.
+     * @param pageSize The number of room objects to return on each page.
+     * @param name The name that the user search for the room.
+     * @return The room for the specified Name.
+     */
+    @GetMapping("/filterByName")
+    List<Room> filterByName(
+            @RequestParam int page,
+            @RequestParam int pageSize,
+            @RequestParam String name
+    ){
+        return Algorithm.<Room>paginate(getJsonTable(),page,pageSize,kamar -> kamar.name.contains(name));
+    }
+
+    /**
+     * This method is used to filter room by Price.
+     * This method uses the paginate method from the Algorithm class to paginate the results.
+     *
+     * @param page The page number to be return.
+     * @param pageSize The number of room objects to return on each page.
+     * @param min The minimum price that the user search for the room.
+     * @param max The maximum price that the user search for the room.
+     * @return The room for the specified range of Price.
+     */
+    @GetMapping("/filterByPrice")
+    List<Room> filterByPrice(
+            @RequestParam int page,
+            @RequestParam int pageSize,
+            @RequestParam int min,
+            @RequestParam int max
+    ){
+        return Algorithm.<Room>paginate(getJsonTable(),page,pageSize,i -> ((i.price.price >= min) && (i.price.price <= max)));
+    }
 }
