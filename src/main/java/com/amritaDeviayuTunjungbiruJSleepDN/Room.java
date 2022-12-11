@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * This class represents a room in a hotel.
+ * This class represents a room.
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @since 27 September 2022
