@@ -7,28 +7,42 @@ import java.util.regex.Pattern;
  * This class represents an account for a user of the hotel booking system.
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
- * @version (27-09-2022)
+ * @version 1.0
+ * @since 27 September 2022
  */
 public class Account extends Serializable {
-    /** The name of the user associated with the account. */
+    /**
+     * The name of the user associated with the account.
+     */
     public String name;
 
-    /** The email address of the user associated with the account. */
+    /**
+     * The email address of the user associated with the account.
+     */
     public String email;
 
-    /** The password for the account. */
+    /**
+     * The password for the account.
+     */
     public String password;
 
-    /** The balance of the account. */
+    /**
+     * The balance of the account.
+     */
     public double balance;
 
-    /** The renter associated with the account. */
+    /**
+     * The renter associated with the account.
+     */
     public Renter renter;
 
-    /** A regular expression that matches a valid email address. */
+    /**
+     * A regular expression that matches a valid email address.
+     */
     public static final String REGEX_EMAIL = "^[a-zA-Z0-9 ][a-zA-Z0-9]+@[a-zA-Z.]+?\\.[a-zA-Z]+?$";
 
-    /** A regular expression that matches a valid password. */
+    /** A regular expression that matches a valid password.
+     */
     public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
 
     /**

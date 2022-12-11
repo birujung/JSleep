@@ -9,10 +9,10 @@ import java.util.Collections;
 import java.util.Vector;
 
 /**
- * Json Table is used to write and read JSON in every class or method that call json table
+ * Json Table is used to write and read JSON in every class or method that call json table.
+ *
  * @param <T> generic as a universal type of data.
- * @author Amrita Deviayu Tunjungbiru
- * @version (1-11-2022)
+ * @author Kemas Rafly Omar Thoriq
  */
 public class JsonTable<T> extends Vector<T> {
     private static final Gson gson = new Gson();

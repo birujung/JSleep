@@ -15,8 +15,8 @@ import java.security.NoSuchAlgorithmException;
  * The AccountController class provides methods to handle requests for accounts, such as logging in, registering,
  * and adding a renter to an account.
  *
- * It implements the {@link BasicGetController} interface and uses a JsonTable of Account objects to store
- * account information.
+ * <p>It implements the {@link BasicGetController} interface and uses a JsonTable of Account objects to store
+ * account information.</p>
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @see Account

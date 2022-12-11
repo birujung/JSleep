@@ -1,4 +1,5 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
+
 import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,7 +8,8 @@ import java.util.Date;
  * This class represents a room in a hotel.
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
- * @version (27-09-2022)
+ * @since 27 September 2022
+ * @version 1.0
  */
 public class Room extends Serializable
 {
@@ -78,12 +80,4 @@ public class Room extends Serializable
                 "\n(" + price + ")" +
                 "\nBed Type: " + bedType;
     }
-
-//    public Object write() {
-//        return null;
-//    }
-//
-//    public boolean read(String content) {
-//        return false;
-//    }
 }

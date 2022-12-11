@@ -2,68 +2,51 @@ package com.amritaDeviayuTunjungbiruJSleepDN;
 
 
 /**
- * Amrita Deviayu Tunjungbiru
- * 2106636584
+ * This class represents a price for a product or service.
+ *
+ * <p>The price can have a discount applied to it, and a rebate can be provided as well.</p>
+ *
+ * @author Amrita Deviayu Tunjungbiru (2106636584)
+ * @version (11-10-2022)
  */
-public class Price
-{
+public class Price {
+    /**
+     *  The base price of the room.
+     */
     public double price;
+
+    /**
+     * The discount applied to the price as a percentage (e.g. 20 for 20%).
+     */
     public double discount;
-    
+
+    /**
+     * Constructs a new Price instance with the given base price and no discount.
+     *
+     * @param price The base price of the room
+     */
     public Price(double price) {
         this.price = price;
         this.discount = 0;
     }
-    
+
+    /**
+     * Constructs a new Price instance with the given base price and discount.
+     *
+     * @param price The base price of the room
+     * @param discount The discount that will be applied to the original price
+     */
     public Price(double price, double discount) {
         this.price = price;
         this.discount = discount;
     }
-    
+
+    /**
+     * This method is used to show the price and discount of a room.
+     *
+     * @return String of price and discount
+     */
     public String toString() {
-        return "" + price;
-        //return "\nPrice: " + price + "\nDiscount: " + discount;
+        return "\nPrice: " + price + "\nDiscount: " + discount;
     }
-    
-    /* CS Modul 2
-    public double price;
-    public int discount;
-    public double rebate;
-    
-    public Price(double price) {
-        this.price = price;
-        this.discount = 0;
-        this.rebate = 0;
-    }
-    
-    public Price(double price, int discount) {
-        this.price = price;
-        this.discount = discount;
-        this.rebate = 0;
-    }
-    
-    public Price(double price, double rebate) {
-        this.price = price;
-        this.rebate = rebate;
-        this.discount = 0;
-    }
-    
-    private double getDiscountedPrice() {
-        if ( discount >= 100.0 ){
-            return 100.0;
-        } else if ( discount == 100.0 ){
-            return 0.0;
-        } else {
-            return (price - (price * discount / 100));
-        }
-    }
-    
-    private double getRebatedPrice() {
-        if ( rebate > price ){
-            return price;
-        } else {
-            return price - rebate;
-        }
-    }
-    */
 }

@@ -10,8 +10,8 @@ import java.util.*;
 /**
  * A REST controller that provides methods to create, accept, cancel, and submit payments.
  *
- * This class implements the {@link BasicGetController} interface, which provides methods to
- * get a single object by ID and to get a page of objects from the `JsonTable Payment` that stores the data.
+ * <p>This class implements the {@link BasicGetController} interface, which provides methods to
+ * get a single object by ID and to get a page of objects from the `JsonTable Payment` that stores the data.</p>
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @see Payment
@@ -39,7 +39,7 @@ public class PaymentController implements BasicGetController<Payment> {
 
     /**
      * This method creates a new payment for a room booking.
-     * The payment is created by providing the buyer's id, the renter's id, the room's id, and the dates of the booking.
+     * <p>The payment is created by providing the buyer's id, the renter's id, the room's id, and the dates of the booking.</p>
      *
      * @param buyerId The id of the buyer making the payment
      * @param renterId The id of the renter who owns the room being booked
@@ -132,7 +132,7 @@ public class PaymentController implements BasicGetController<Payment> {
 
     /**
      * This method is used to get all the order for renter.
-     * This method uses the paginate method from the Algorithm class to paginate the results.
+     * <p>This method uses the paginate method from the Algorithm class to paginate the results.</p>
      *
      * @param renterId The ID of the Renter.
      * @param page The page number to be return.
@@ -150,7 +150,7 @@ public class PaymentController implements BasicGetController<Payment> {
 
     /**
      * This method is used to get all the order for buyer.
-     * This method uses the collect method from the Algorithm class to collect the results.
+     * <p>This method uses the collect method from the Algorithm class to collect the results.</p>
      *
      * @param buyerId The ID of the Buyer.
      * @return A list of 'Payment' objects that are associated with the specified buyer ID.

@@ -1,11 +1,10 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
 
-
 /**
  * This enum represents the different cities where a hotel can be located.
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
- * @version (29-09-2022)
+ * @version 29 September 2022
  */
 public enum City
 {

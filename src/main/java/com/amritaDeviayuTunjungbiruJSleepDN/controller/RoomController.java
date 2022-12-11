@@ -8,8 +8,8 @@ import java.util.*;
 /**
  * A REST controller that provides methods to create, get room by renter, get all room, and filter the room list.
  *
- * It implements the {@link BasicGetController} interface and uses a JsonTable of Room objects to store
- * room information.
+ * <p>It implements the {@link BasicGetController} interface and uses a JsonTable of Room objects to store
+ * room information.</p>
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @see Room
@@ -37,7 +37,7 @@ public class RoomController implements BasicGetController<Room> {
 
     /**
      * This method is used to get all room by renter.
-     * This method uses the paginate method from the Algorithm class to paginate the results.
+     * <p>This method uses the paginate method from the Algorithm class to paginate the results.</p>
      *
      * @param id The ID of the room.
      * @param page The page number to be return.
@@ -91,7 +91,7 @@ public class RoomController implements BasicGetController<Room> {
 
     /**
      * This method is used to get all room.
-     * This method uses the paginate method from the Algorithm class to paginate the results.
+     * <p>This method uses the paginate method from the Algorithm class to paginate the results.</p>
      *
      * @param page The page number to be return.
      * @param pageSize The number of room objects to return on each page.
@@ -108,7 +108,7 @@ public class RoomController implements BasicGetController<Room> {
 
     /**
      * This method is used to filter room by City.
-     * This method uses the paginate method from the Algorithm class to paginate the results.
+     * <p>This method uses the paginate method from the Algorithm class to paginate the results.</p>
      *
      * @param page The page number to be return.
      * @param pageSize The number of room objects to return on each page.
@@ -126,7 +126,7 @@ public class RoomController implements BasicGetController<Room> {
 
     /**
      * This method is used to filter room by Name.
-     * This method uses the paginate method from the Algorithm class to paginate the results.
+     * <p>This method uses the paginate method from the Algorithm class to paginate the results.</p>
      *
      * @param page The page number to be return.
      * @param pageSize The number of room objects to return on each page.
@@ -144,7 +144,7 @@ public class RoomController implements BasicGetController<Room> {
 
     /**
      * This method is used to filter room by Price.
-     * This method uses the paginate method from the Algorithm class to paginate the results.
+     * <p>This method uses the paginate method from the Algorithm class to paginate the results.</p>
      *
      * @param page The page number to be return.
      * @param pageSize The number of room objects to return on each page.

@@ -1,9 +1,16 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
+
 import java.util.*;
 
 /**
+ * A utility class that provides a collection of static methods for working with collections of objects.
+ *
+ * This class contains methods for filtering, transforming, and counting objects in collections.
+ * It supports arrays, `Iterable` objects, and `Iterator` objects as input.
+ *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
- * @version (11-10-2022)
+ * @version 1.0
+ * @since 11 October 2022
  */
 public class Algorithm {
     private Algorithm() {

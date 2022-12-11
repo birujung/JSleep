@@ -1,12 +1,12 @@
 package com.amritaDeviayuTunjungbiruJSleepDN;
 
-
 /**
- * Amrita Deviayu Tunjungbiru
- * 2106636584
+ * This enum represents the different type of discount.
+ *
+ * @author Amrita Deviayu Tunjungbiru (2106636584)
+ * @version 29 September 2022
  */
-public enum Type
-{
+public enum Type {
     REBATE,
     DISCOUNT
 }
