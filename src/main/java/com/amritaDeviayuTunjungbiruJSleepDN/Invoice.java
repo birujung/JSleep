@@ -5,7 +5,7 @@ import com.amritaDeviayuTunjungbiruJSleepDN.dbjson.Serializable;
 /**
  * A class that represents an invoice for a rental transaction.
  *
- * This class extends the `Serializable` class and adds fields for the IDs of the buyer and renter, the payment status, and the rating of the rental. It also provides a `print()` method that returns a string representation of the invoice.
+ * <p>This class extends the `Serializable` class and adds fields for the IDs of the buyer and renter, the payment status, and the rating of the rental. It also provides a `print()` method that returns a string representation of the invoice.</p>
  *
  * @author Amrita Deviayu Tunjungbiru (2106636584)
  * @version (27-09-2022)
