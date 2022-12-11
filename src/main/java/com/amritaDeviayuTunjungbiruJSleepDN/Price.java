@@ -2,7 +2,7 @@ package com.amritaDeviayuTunjungbiruJSleepDN;
 
 
 /**
- * This class represents a price for a product or service.
+ * This class represents a price for a room.
  *
  * <p>The price can have a discount applied to it, and a rebate can be provided as well.</p>
  *
